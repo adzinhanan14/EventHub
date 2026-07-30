@@ -1,4 +1,4 @@
-# Tugas Git & Database - Amikom Event Hub
+# UAS DB - Amikom Event Hub
 
 | Informasi | Detail |
 | :--- | :--- |
