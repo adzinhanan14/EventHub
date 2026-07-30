@@ -3,11 +3,13 @@
 | Informasi | Detail |
 | :--- | :--- |
 | **Nama** | Abdullah Adzin Hanan |
+| **Nama** | Allaudya Mutiara Annida |
+| **Nama** | Yoana Dovina Fallen |
 | **NIM** | 24.12.3405 |
-| **Link Project Tugas 1 Laravel Cloud** | [https://amikomeventhub-3405-adzinhanan.free.laravel.cloud/] |
-| **Link Project Larave tugas 2 admin Cloud** | [https://amikomeventhub-3405-adzinhanan.free.laravel.cloud/admin/dashboard] |
-| **Link Project Larave tugas 2 Dashboard Cloud** | [https://amikomeventhub-3405-adzinhanan.free.laravel.cloud/] |
+| **NIM** | 24.12.3406 |
+| **NIM** | 24.12.3391 |
+| **Link Project ** | [https://amikomeventhub.howto.rocks/] |
 
 ![alt text](Tugas4.png)
 ## Deskripsi
-Project ini adalah aplikasi Laravel untuk Amikom Event Hub yang di-deploy ke Laravel Cloud.
+Project ini adalah aplikasi Laravel untuk Amikom Event Hub yang Jadi Tugas UAS.
