@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Ticket - AmikomEventHub</title>
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #4f46e5; margin: 0; padding: 40px 20px; color: #ffffff; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #14532d; margin: 0; padding: 40px 20px; color: #ffffff; }
         .container { max-width: 450px; margin: 0 auto; width: 100%; }
         .header-text { text-align: center; margin-bottom: 30px; }
         .header-text h1 { font-size: 28px; font-weight: 900; margin: 0 0 10px 0; }
-        .header-text p { color: #e0e7ff; margin: 0; }
+        .header-text p { color: #dcfce7; margin: 0; }
         .ticket-card { background-color: #ffffff; color: #0f172a; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .ticket-top { background-color: #eef2ff; padding: 30px; text-align: center; border-bottom: 2px dashed #c7d2fe; }
-        .ticket-top p { color: #4f46e5; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; }
+        .ticket-top { background-color: #f0fdf4; padding: 30px; text-align: center; border-bottom: 2px dashed #bbf7d0; }
+        .ticket-top p { color: #166534; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; }
         .ticket-top h2 { font-size: 24px; font-weight: 900; margin: 0; }
         .ticket-body { padding: 30px; }
         .grid { display: block; width: 100%; margin-bottom: 20px; }

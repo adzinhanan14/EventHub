@@ -82,8 +82,8 @@
             datasets: [{
                 label: 'Pendapatan (Rp)',
                 data: @json($revenueChart['data']),
-                borderColor: '#4f46e5',
-                backgroundColor: 'rgba(79,70,229,0.1)',
+                borderColor: '#166534',
+                backgroundColor: 'rgba(22,101,52,0.1)',
                 fill: true,
                 tension: 0.4,
             }]

@@ -80,7 +80,7 @@
         type: 'line',
         data: {
             labels: @json($revenueChart['labels']),
-            datasets: [{ label: 'Pendapatan (Rp)', data: @json($revenueChart['data']), borderColor: '#4f46e5', backgroundColor: 'rgba(79,70,229,0.1)', fill: true, tension: 0.4 }]
+            datasets: [{ label: 'Pendapatan (Rp)', data: @json($revenueChart['data']), borderColor: '#166534', backgroundColor: 'rgba(22,101,52,0.1)', fill: true, tension: 0.4 }]
         },
         options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
     });
@@ -88,7 +88,7 @@
         type: 'bar',
         data: {
             labels: @json($userGrowthChart['labels']),
-            datasets: [{ label: 'Pengguna Baru', data: @json($userGrowthChart['data']), backgroundColor: '#10b981', borderRadius: 8 }]
+            datasets: [{ label: 'Pengguna Baru', data: @json($userGrowthChart['data']), backgroundColor: '#15803d', borderRadius: 8 }]
         },
         options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
     });

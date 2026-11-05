@@ -12,10 +12,10 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
                     <!-- Header with Gradient and Icon -->
                     <tr>
-                        <td align="center" style="background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%); padding: 50px 20px;">
+                        <td align="center" style="background-color: #14532d; padding: 50px 20px;">
                             <img src="https://img.icons8.com/nolan/96/certificate.png" alt="Certificate Icon" width="80" style="display: block; margin-bottom: 20px;">
                             <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 0.5px;">E-Sertifikat Kehadiran</h1>
-                            <p style="color: #e0e7ff; margin: 10px 0 0 0; font-size: 16px; font-weight: 500;">Amikom Event Hub</p>
+                            <p style="color: #dcfce7; margin: 10px 0 0 0; font-size: 16px; font-weight: 500;">Amikom Event Hub</p>
                         </td>
                     </tr>
                     
@@ -28,7 +28,7 @@
                                 Terima kasih telah berpartisipasi dengan antusias dalam event kami:
                             </p>
                             
-                            <div style="background-color: #f8fafc; border-left: 4px solid #4f46e5; padding: 20px; border-radius: 6px; margin-bottom: 28px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                            <div style="background-color: #f0fdf4; border-left: 4px solid #166534; padding: 20px; border-radius: 6px; margin-bottom: 28px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
                                 <strong style="color: #0f172a; font-size: 18px;">{{ $eventTitle ?? ($transaction->event->title ?? 'Event') }}</strong>
                             </div>
 

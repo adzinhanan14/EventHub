@@ -11,35 +11,41 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // 1. Ambil semua jenis kategori untuk tampilan filter tab button
-        $categories = Category::all();
+        $categories = Category::orderBy('name')->get();
 
-        // 2. Ambil semua partner
         $partners = Partner::latest()->get();
 
-        // 3. Buat kueri dasar untuk mengambil event:
-        //    - Eager loading `category`
-        //    - Tampilkan SEMUA event (termasuk yang sudah lewat tanggalnya),
-        //      event yang sudah lewat akan diberi label "Telah Berakhir" di tampilan.
-        //    - Urutan: event mendatang (terdekat dahulu) tampil lebih atas,
-        //      lalu event yang sudah lewat (terbaru dahulu) di bagian bawah.
-        $query = Event::with('category')
-                      ->orderByRaw('CASE WHEN date >= ? THEN 0 ELSE 1 END', [now()])
-                      ->orderByRaw('CASE WHEN date >= ? THEN date END ASC', [now()])
-                      ->orderByRaw('CASE WHEN date < ? THEN date END DESC', [now()]);
+        $query = Event::with(['category', 'organization', 'ticketTiers']);
 
-        // 4. Filter query jika URL memiliki parameter ?category=...
-        if ($request->has('category') && $request->category != '') {
+        if ($request->filled('category')) {
             $query->whereHas('category', function ($q) use ($request) {
                 $q->where('slug', $request->category);
             });
         }
 
-        // 5. Eksekusi query
-        $events = $query->get();
+        $events = (clone $query)
+            ->where('date', '>=', now())
+            ->orderBy('date')
+            ->take(5)
+            ->get();
+
+        $showingArchive = false;
+
+        if ($events->isEmpty()) {
+            $archive = (clone $query)
+                ->where('date', '<', now())
+                ->orderByDesc('date')
+                ->take(5)
+                ->get();
+
+            if ($archive->isNotEmpty()) {
+                $events = $archive;
+                $showingArchive = true;
+            }
+        }
 
         return response()
-            ->view('welcome', compact('events', 'categories', 'partners'))
+            ->view('welcome', compact('events', 'categories', 'partners', 'showingArchive'))
             ->header('Cache-Control', 'no-store, no-cache, must-revalidate')
             ->header('Pragma', 'no-cache');
     }

@@ -1,77 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmikomEventHub - Temukan Event Seru!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="@yield('meta_description', 'Temukan acara kampus, lihat detail tiket, dan pesan tiket di AmikomEventHub.')">
+    <meta name="theme-color" content="#ffffff">
+    <title>@yield('title', 'AmikomEventHub | Agenda acara kampus')</title>
+    <script>
+        if (localStorage.getItem('amikom-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+        html {
+            scroll-padding-top: 6rem;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
+<body class="font-sans bg-slate-50 text-slate-900">
+    <a href="#main-content"
+        class="absolute left-4 top-4 z-[100] -translate-y-20 rounded-lg bg-white px-4 py-3 font-semibold text-indigo-900 shadow focus:translate-y-0">
+        Lewati ke konten
+    </a>
 
-    <!-- Navigation -->
-    <nav
-        class="glass sticky top-8 z-40 mx-4 mt-4 px-6 py-4 rounded-2xl border border-white/20 shadow-lg flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <div
-                class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                AH</div>
-            <span class="text-xl font-bold tracking-tight">AmikomEventHub</span>
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+            <a href="{{ route('home') }}" class="min-w-0 truncate rounded text-sm font-bold tracking-tight text-slate-950 sm:text-lg">
+                AmikomEventHub
+            </a>
+
+            <nav aria-label="Navigasi utama" class="hidden items-center gap-7 xl:flex">
+                <a href="{{ route('home') }}#events" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Jelajahi</a>
+                <a href="{{ route('home') }}#kategori" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Kategori</a>
+                <a href="{{ route('home') }}#team" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Tentang tim</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <div class="hidden items-center gap-2 xl:flex">
+                    @auth
+                        <span class="max-w-40 truncate text-sm font-semibold text-slate-600">Hai, {{ Auth::user()->name }}</span>
+                        <a href="{{ route('ticket') }}" class="inline-flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Tiket saya</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="min-h-11 rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Keluar</button>
+                        </form>
+                    @else
+                        <a href="{{ route('organizer.login') }}" class="inline-flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Untuk panitia</a>
+                        <a href="{{ route('login') }}" class="inline-flex min-h-11 items-center rounded-lg bg-indigo-800 px-4 font-semibold text-white hover:bg-indigo-900">Masuk</a>
+                    @endauth
+                    <button type="button" data-theme-toggle aria-pressed="false" class="min-h-11 rounded-lg border border-slate-500 px-3 font-semibold text-slate-800 hover:bg-slate-100">
+                        Mode gelap
+                    </button>
+                </div>
+
+                <details class="relative xl:hidden">
+                    <summary class="flex min-h-11 cursor-pointer list-none items-center rounded-lg border border-slate-500 px-3 font-semibold text-slate-800">
+                        Menu
+                    </summary>
+                    <nav aria-label="Navigasi seluler" class="absolute right-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                        <a href="{{ route('home') }}#events" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Jelajahi event</a>
+                        <a href="{{ route('home') }}#kategori" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Kategori</a>
+                        <a href="{{ route('home') }}#team" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Tentang tim</a>
+                        @auth
+                            <a href="{{ route('ticket') }}" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Tiket saya</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="min-h-11 w-full rounded-lg px-3 text-left font-semibold text-slate-700 hover:bg-slate-100">Keluar</button>
+                            </form>
+                        @else
+                            <a href="{{ route('organizer.login') }}" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Masuk sebagai panitia</a>
+                            <a href="{{ route('login') }}" class="flex min-h-11 items-center rounded-lg px-3 font-semibold text-indigo-800 hover:bg-indigo-50">Masuk</a>
+                        @endauth
+                        <button type="button" data-theme-toggle aria-pressed="false" class="min-h-11 w-full rounded-lg px-3 text-left font-semibold text-slate-800 hover:bg-slate-100">
+                            Mode gelap
+                        </button>
+                    </nav>
+                </details>
+
+                @guest
+                    <a href="{{ route('login') }}" class="inline-flex min-h-11 items-center rounded-lg bg-indigo-800 px-3 font-semibold text-white hover:bg-indigo-900 xl:hidden">Masuk</a>
+                @endguest
+            </div>
         </div>
-        <div class="hidden md:flex gap-8 font-medium">
-            <a href="#events" class="text-indigo-600">Jelajahi</a>
-            <a href="#kategori" class="hover:text-indigo-600 transition">Kategori</a>
-            <a href="#team" class="hover:text-indigo-600 transition">Tentang Kami</a>
-        </div>
-        <div class="flex items-center gap-3">
-            @auth
-                <span class="hidden md:inline text-sm font-semibold text-slate-600">Hai, {{ Auth::user()->name }}</span>
-                <a href="{{ route('ticket') }}" class="px-5 py-2.5 rounded-xl font-semibold hover:bg-slate-200 transition">Tiket Saya</a>
-                <form action="{{ route('logout') }}" method="POST" class="inline">
-                    @csrf
-                    <button type="submit"
-                        class="px-5 py-2.5 rounded-xl font-semibold text-rose-600 hover:bg-rose-50 transition">Keluar</button>
-                </form>
-            @else
-                <a href="{{ route('organizer.login') }}" class="hidden md:inline px-5 py-2.5 rounded-xl font-semibold hover:bg-slate-200 transition">Panitia/HIMA</a>
-                <a href="{{ route('login') }}"
-                    class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition">Masuk</a>
-            @endauth
-        </div>
-    </nav>
+    </header>
 
     @if (session('success'))
-        <div class="max-w-3xl mx-auto mt-6 px-6">
-            <div class="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-2xl font-semibold shadow-sm">
+        <div class="mx-auto mt-5 max-w-7xl px-4 sm:px-6" role="status" aria-live="polite">
+            <div class="rounded-lg border border-green-800 bg-green-50 px-5 py-4 font-semibold text-green-900">
                 {{ session('success') }}
             </div>
         </div>
     @endif
 
     @if (session('error'))
-        <div class="max-w-3xl mx-auto mt-6 px-6">
-            <div class="bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl font-semibold shadow-sm">
+        <div class="mx-auto mt-5 max-w-7xl px-4 sm:px-6" role="alert">
+            <div class="rounded-lg border border-rose-800 bg-rose-50 px-5 py-4 font-semibold text-rose-900">
                 {{ session('error') }}
             </div>
         </div>
     @endif
 
     @if (isset($errors) && $errors->any())
-        <div class="max-w-3xl mx-auto mt-6 px-6">
-            <div class="bg-rose-50 border border-rose-200 text-rose-700 px-6 py-4 rounded-2xl font-semibold shadow-sm">
+        <div class="mx-auto mt-5 max-w-7xl px-4 sm:px-6" role="alert">
+            <div class="rounded-lg border border-rose-800 bg-rose-50 px-5 py-4 font-semibold text-rose-900">
                 <ul class="list-disc list-inside space-y-1">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -81,39 +134,24 @@
         </div>
     @endif
 
-    @yield('content')
+    <main id="main-content">
+        @yield('content')
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-indigo-900 text-indigo-100 py-20 px-6 mt-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="space-y-4 col-span-2">
-                <div class="flex items-center gap-2">
-                    <div
-                        class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-indigo-900 font-bold text-xl">
-                        AH</div>
-                    <span class="text-2xl font-bold text-white">AmikomEventHub</span>
-                </div>
-                <p class="max-w-xs text-indigo-300">Platform reservasi tiket event online terbaik untuk mahasiswa dan
-                    penyelenggara profesional.</p>
-            </div>
+    <footer class="mt-16 border-t border-slate-200 bg-white px-4 py-10 sm:px-6">
+        <div class="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-                <h4 class="text-white font-bold mb-6">Navigasi</h4>
-                <ul class="space-y-4">
-                    <li><a href="#" class="hover:text-white transition">Home</a></li>
-                    <li><a href="#" class="hover:text-white transition">Semua Event</a></li>
-                    <li><a href="#" class="hover:text-white transition">Cara Bayar</a></li>
-                </ul>
+                <a href="{{ route('home') }}" class="font-bold text-slate-950">AmikomEventHub</a>
+                <p class="mt-2 max-w-md text-sm leading-6 text-slate-700">Temukan acara kampus, lihat detail tiket, dan lanjutkan pemesanan.</p>
             </div>
-            <div>
-                <h4 class="text-white font-bold mb-6">Hubungi Kami</h4>
-                <ul class="space-y-4">
-                    <li>support@eventtiket.com</li>
-                    <li>+62 812 3456 7890</li>
-                </ul>
-            </div>
+            <nav aria-label="Navigasi footer" class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+                <a href="{{ route('home') }}#events" class="min-h-11 inline-flex items-center text-slate-700 hover:text-indigo-800">Jelajahi event</a>
+                <a href="{{ route('home') }}#kategori" class="min-h-11 inline-flex items-center text-slate-700 hover:text-indigo-800">Kategori</a>
+                <a href="{{ route('home') }}#team" class="min-h-11 inline-flex items-center text-slate-700 hover:text-indigo-800">Tentang tim</a>
+            </nav>
         </div>
-        <div class="max-w-7xl mx-auto pt-12 mt-12 border-t border-indigo-800 text-center text-indigo-400 text-sm">
-            &copy; 2024 AmikomEventHub. Built with Laravel & Tailwind CSS.
+        <div class="mx-auto mt-6 max-w-7xl border-t border-slate-200 pt-5 text-sm text-slate-600">
+            &copy; {{ now()->year }} AmikomEventHub
         </div>
     </footer>
 

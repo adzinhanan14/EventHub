@@ -21,11 +21,11 @@
         color: #333333;
     }
 
-    /* Gold Frame Border */
-    .gold-frame {
+    /* Green frame border */
+    .brand-frame {
         position: absolute;
         top: 30px; bottom: 30px; left: 30px; right: 30px;
-        border: 2px solid #d3ad5b;
+        border: 2px solid #166534;
         z-index: 1;
     }
 
@@ -33,25 +33,25 @@
     .corner-shape { position: absolute; z-index: 2; }
 
     /* Top Left Corner */
-    .tl-navy-v { top: 0; left: 0; width: 45px; height: 260px; background-color: #152c4e; }
-    .tl-navy-h { top: 0; left: 0; width: 260px; height: 45px; background-color: #152c4e; }
-    .tl-gold-v { top: 55px; left: 55px; width: 12px; height: 180px; background-color: #d3ad5b; border-radius: 0 0 4px 4px;}
-    .tl-gold-h { top: 55px; left: 55px; width: 180px; height: 12px; background-color: #d3ad5b; border-radius: 0 4px 4px 0;}
-    .tl-gray-arc { top: 67px; left: 67px; width: 140px; height: 140px; background-color: #e0e4eb; border-bottom-right-radius: 100%; }
+    .tl-green-v { top: 0; left: 0; width: 45px; height: 260px; background-color: #14532d; }
+    .tl-green-h { top: 0; left: 0; width: 260px; height: 45px; background-color: #14532d; }
+    .tl-accent-v { top: 55px; left: 55px; width: 12px; height: 180px; background-color: #166534; border-radius: 0 0 4px 4px;}
+    .tl-accent-h { top: 55px; left: 55px; width: 180px; height: 12px; background-color: #166534; border-radius: 0 4px 4px 0;}
+    .tl-light-arc { top: 67px; left: 67px; width: 140px; height: 140px; background-color: #dcfce7; border-bottom-right-radius: 100%; }
 
     /* Bottom Right Corner */
-    .br-navy-v { bottom: 0; right: 0; width: 45px; height: 260px; background-color: #152c4e; }
-    .br-navy-h { bottom: 0; right: 0; width: 260px; height: 45px; background-color: #152c4e; }
-    .br-gold-v { bottom: 55px; right: 55px; width: 12px; height: 180px; background-color: #d3ad5b; border-radius: 4px 4px 0 0;}
-    .br-gold-h { bottom: 55px; right: 55px; width: 180px; height: 12px; background-color: #d3ad5b; border-radius: 4px 0 0 4px;}
-    .br-gray-arc { bottom: 67px; right: 67px; width: 140px; height: 140px; background-color: #e0e4eb; border-top-left-radius: 100%; }
+    .br-green-v { bottom: 0; right: 0; width: 45px; height: 260px; background-color: #14532d; }
+    .br-green-h { bottom: 0; right: 0; width: 260px; height: 45px; background-color: #14532d; }
+    .br-accent-v { bottom: 55px; right: 55px; width: 12px; height: 180px; background-color: #166534; border-radius: 4px 4px 0 0;}
+    .br-accent-h { bottom: 55px; right: 55px; width: 180px; height: 12px; background-color: #166534; border-radius: 4px 0 0 4px;}
+    .br-light-arc { bottom: 67px; right: 67px; width: 140px; height: 140px; background-color: #dcfce7; border-top-left-radius: 100%; }
 
     /* Top Right & Bottom Left Geometric Decos */
-    .tr-deco-1 { top: 15px; right: 15px; width: 70px; height: 70px; border-top: 2px solid #d3ad5b; border-right: 2px solid #d3ad5b; }
-    .tr-deco-2 { top: 40px; right: 40px; width: 35px; height: 35px; border-top: 2px solid #d3ad5b; border-right: 2px solid #d3ad5b; }
+    .tr-deco-1 { top: 15px; right: 15px; width: 70px; height: 70px; border-top: 2px solid #166534; border-right: 2px solid #166534; }
+    .tr-deco-2 { top: 40px; right: 40px; width: 35px; height: 35px; border-top: 2px solid #166534; border-right: 2px solid #166534; }
     
-    .bl-deco-1 { bottom: 15px; left: 15px; width: 70px; height: 70px; border-bottom: 2px solid #d3ad5b; border-left: 2px solid #d3ad5b; }
-    .bl-deco-2 { bottom: 40px; left: 40px; width: 35px; height: 35px; border-bottom: 2px solid #d3ad5b; border-left: 2px solid #d3ad5b; }
+    .bl-deco-1 { bottom: 15px; left: 15px; width: 70px; height: 70px; border-bottom: 2px solid #166534; border-left: 2px solid #166534; }
+    .bl-deco-2 { bottom: 40px; left: 40px; width: 35px; height: 35px; border-bottom: 2px solid #166534; border-left: 2px solid #166534; }
 
     /* Content Styling */
     .content {
@@ -66,7 +66,7 @@
         font-family: 'Helvetica', 'Arial', sans-serif;
         font-weight: bold;
         font-size: 54px;
-        color: #123053;
+        color: #14532d;
         letter-spacing: 2px;
         line-height: 1;
         margin: 0;
@@ -76,7 +76,7 @@
         font-family: 'Helvetica', 'Arial', sans-serif;
         font-weight: bold;
         font-size: 26px;
-        color: #123053;
+        color: #14532d;
         letter-spacing: 2px;
         margin-top: 5px;
         text-transform: uppercase;
@@ -98,7 +98,7 @@
         font-family: 'Georgia', 'Times New Roman', serif;
         font-size: 40px;
         font-weight: bold;
-        color: #be9436;
+        color: #166534;
         line-height: 1.2;
         text-transform: uppercase;
         margin: 0;
@@ -109,7 +109,7 @@
     .name-line {
         width: 600px;
         height: 2px;
-        background-color: #8fa0b5;
+        background-color: #166534;
         margin: 5px auto 25px;
     }
 
@@ -146,7 +146,7 @@
         font-family: 'Georgia', 'Times New Roman', serif;
         font-style: italic;
         font-size: 26px;
-        color: #0f1c3f;
+        color: #14532d;
         line-height: 1;
         margin-bottom: 5px;
     }
@@ -154,13 +154,13 @@
     .sign-line {
         width: 80%;
         height: 2px;
-        background-color: #8fa0b5;
+        background-color: #166534;
         margin: 0 auto 5px;
     }
     .sign-name {
         font-size: 13px;
         font-weight: bold;
-        color: #123053;
+        color: #14532d;
         margin-bottom: 2px;
         text-transform: uppercase;
         font-family: 'Helvetica', 'Arial', sans-serif;
@@ -178,8 +178,8 @@
         width: 50px; 
         height: 62px; 
         margin: 0 auto;
-        background-color: #dcaa3a;
-        border: 2px solid #b8860b;
+        background-color: #15803d;
+        border: 2px solid #14532d;
         border-radius: 4px 4px 30px 30px;
         position: relative;
     }
@@ -191,28 +191,28 @@
         width: 100%;
         text-align: center;
         font-size: 9px;
-        color: #a0aab8;
+        color: #404040;
         z-index: 10;
     }
 </style>
 </head>
 <body>
     <div class="certificate">
-        <!-- Center Gold Frame -->
-        <div class="gold-frame"></div>
+        <!-- Center brand frame -->
+        <div class="brand-frame"></div>
         
         <!-- Corner Decorations -->
-        <div class="corner-shape tl-navy-v"></div>
-        <div class="corner-shape tl-navy-h"></div>
-        <div class="corner-shape tl-gold-v"></div>
-        <div class="corner-shape tl-gold-h"></div>
-        <div class="corner-shape tl-gray-arc"></div>
+        <div class="corner-shape tl-green-v"></div>
+        <div class="corner-shape tl-green-h"></div>
+        <div class="corner-shape tl-accent-v"></div>
+        <div class="corner-shape tl-accent-h"></div>
+        <div class="corner-shape tl-light-arc"></div>
 
-        <div class="corner-shape br-navy-v"></div>
-        <div class="corner-shape br-navy-h"></div>
-        <div class="corner-shape br-gold-v"></div>
-        <div class="corner-shape br-gold-h"></div>
-        <div class="corner-shape br-gray-arc"></div>
+        <div class="corner-shape br-green-v"></div>
+        <div class="corner-shape br-green-h"></div>
+        <div class="corner-shape br-accent-v"></div>
+        <div class="corner-shape br-accent-h"></div>
+        <div class="corner-shape br-light-arc"></div>
 
         <div class="corner-shape tr-deco-1"></div>
         <div class="corner-shape tr-deco-2"></div>

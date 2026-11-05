@@ -5,16 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Panitia - AmikomEventHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+    @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-50 text-slate-900 flex min-h-screen">
+<body class="font-sans bg-slate-50 text-slate-900 flex min-h-screen">
     <!-- Sidebar -->
     <aside class="w-64 bg-indigo-900 text-indigo-100 flex flex-col p-6 space-y-8 sticky top-0 h-screen">
         <div class="flex items-center gap-3">
@@ -98,7 +92,7 @@
                     <p class="text-xs text-slate-400">{{ Auth::user()->organization->name ?? '-' }}</p>
                 </div>
                 <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border flex items-center justify-center p-1">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'P') }}&background=6366f1&color=fff"
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name ?? 'P') }}&background=166534&color=fff"
                          class="rounded-xl">
                 </div>
             </div>
