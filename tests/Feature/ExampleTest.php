@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Organization;
 use App\Models\TicketTier;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -67,6 +68,34 @@ class ExampleTest extends TestCase
             ->assertSee('Rp75.000')
             ->assertSee(route('events.show', $event->id))
             ->assertDontSee('Acara yang sudah lewat');
+    }
+
+    public function test_uploaded_event_poster_replaces_temporary_homepage_photos(): void
+    {
+        Storage::fake('public');
+        Storage::disk('public')->put('posters/workshop.png', 'poster');
+
+        $category = Category::create(['name' => 'Workshop', 'slug' => 'workshop']);
+        $organization = Organization::create([
+            'name' => 'Panitia Kampus',
+            'slug' => 'panitia-kampus',
+            'status' => 'approved',
+        ]);
+        Event::create([
+            'organization_id' => $organization->id,
+            'category_id' => $category->id,
+            'title' => 'Workshop Kampus',
+            'date' => now()->addDay(),
+            'location' => 'Yogyakarta',
+            'price' => 0,
+            'stock' => 10,
+            'poster_path' => 'posters/workshop.png',
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee(asset('storage/posters/workshop.png'))
+            ->assertDontSee(asset('assets/landing/event-audience.jpg'));
     }
 
     public function test_the_homepage_limits_events_to_five(): void

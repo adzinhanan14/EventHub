@@ -51,14 +51,14 @@
                 AmikomEventHub
             </a>
 
-            <nav aria-label="Navigasi utama" class="hidden items-center gap-7 xl:flex">
+            <nav aria-label="Navigasi utama" class="hidden items-center gap-7 lg:flex">
                 <a href="{{ route('home') }}#events" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Jelajahi</a>
                 <a href="{{ route('home') }}#kategori" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Kategori</a>
                 <a href="{{ route('home') }}#team" class="min-h-11 flex items-center font-semibold text-slate-700 hover:text-indigo-800">Tentang tim</a>
             </nav>
 
             <div class="flex items-center gap-2">
-                <div class="hidden items-center gap-2 xl:flex">
+                <div class="hidden items-center gap-2 lg:flex">
                     @auth
                         <span class="max-w-40 truncate text-sm font-semibold text-slate-600">Hai, {{ Auth::user()->name }}</span>
                         <a href="{{ route('ticket') }}" class="inline-flex min-h-11 items-center rounded-lg px-3 font-semibold text-slate-700 hover:bg-slate-100">Tiket saya</a>
@@ -75,7 +75,7 @@
                     </button>
                 </div>
 
-                <details class="relative xl:hidden">
+                <details class="relative lg:hidden">
                     <summary class="flex min-h-11 cursor-pointer list-none items-center rounded-lg border border-slate-500 px-3 font-semibold text-slate-800">
                         Menu
                     </summary>
@@ -100,7 +100,7 @@
                 </details>
 
                 @guest
-                    <a href="{{ route('login') }}" class="inline-flex min-h-11 items-center rounded-lg bg-indigo-800 px-3 font-semibold text-white hover:bg-indigo-900 xl:hidden">Masuk</a>
+                    <a href="{{ route('login') }}" class="inline-flex min-h-11 items-center rounded-lg bg-indigo-800 px-3 font-semibold text-white hover:bg-indigo-900 lg:hidden">Masuk</a>
                 @endguest
             </div>
         </div>

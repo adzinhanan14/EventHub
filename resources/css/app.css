@@ -6,7 +6,7 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: Arial, Helvetica, ui-sans-serif, system-ui, sans-serif;
     --color-indigo-50: #f0fdf4;
     --color-indigo-100: #dcfce7;
     --color-indigo-200: #bbf7d0;
